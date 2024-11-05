@@ -1,6 +1,5 @@
 package com.zoohandlung.m295_projektarbeit.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,38 +21,28 @@ public class Animal {
 
       /**
      * Der Name des Tieres.
-     * Muss angegeben werden und darf nicht null sein.
      */
-    @Column(nullable = false)
     private String name;
 
        /**
      * Die Spezies des Tieres (z. B. "Hund", "Katze").
-     * Muss angegeben werden und darf nicht null sein.
      */
-    @Column(nullable = false)
     private String species;
 
        /**
      * Der Preis des Tieres.
-     * Muss angegeben werden und darf nicht null sein.
      */
-    @Column(nullable = false)
     private double price;
 
     
     /**
      * Gibt an, ob das Tier verfügbar ist.
-     * Muss angegeben werden und darf nicht null sein.
      */
-    @Column(nullable = false)
     private boolean available;
 
         /**
      * Eine optionale Beschreibung des Tieres.
-     * Kann bis zu 500 Zeichen lang sein.
      */
-    @Column(length = 500)
     private String description;
 
         /**

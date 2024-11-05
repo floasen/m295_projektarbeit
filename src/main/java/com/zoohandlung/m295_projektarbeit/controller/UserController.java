@@ -37,7 +37,7 @@ public class UserController {
         
         Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
         if (existingUser.isPresent()) {
-            return new ResponseEntity<>("Username is already taken", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Username is already taken", HttpStatus.CONFLICT);
         }
     
         if (user.getRole() == null || user.getRole().isEmpty()) {
@@ -64,7 +64,7 @@ public class UserController {
             if (foundUser.getPassword().equals(user.getPassword())) {
                 return new ResponseEntity<>("Login successful", HttpStatus.OK);
             } else {
-                return new ResponseEntity<>("Invalid password", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Invalid password", HttpStatus.CONFLICT);
             }
         }
         return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);

@@ -1,7 +1,6 @@
 package com.zoohandlung.m295_projektarbeit.model;
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +28,6 @@ public class User {
      * Benutzername des Benutzers. Muss einzigartig sein.
      */
     @NotBlank(message = "Username is required")
-    @Column(unique = true)
     private String username;
 
     /**

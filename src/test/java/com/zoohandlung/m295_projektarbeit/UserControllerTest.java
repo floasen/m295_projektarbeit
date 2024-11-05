@@ -10,7 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +50,7 @@ public class UserControllerTest {
     public void testRegisterUserAlreadyExists() {
         when(userRepository.findByUsername("benutzer1")).thenReturn(Optional.of(user));
         ResponseEntity<String> response = userController.registerUser(user);
-        assertEquals(BAD_REQUEST, response.getStatusCode());
+        assertEquals(CONFLICT, response.getStatusCode());
         assertEquals("Username is already taken", response.getBody());
         // Testet die Registrierung eines Benutzers, wenn der Benutzername bereits vergeben ist.
     }
@@ -61,7 +61,7 @@ public class UserControllerTest {
         User wrongPasswordUser = new User("benutzer1", "falschesPasswort", "USER");
         when(userRepository.findByUsername("benutzer1")).thenReturn(Optional.of(user));
         ResponseEntity<String> response = userController.loginUser(wrongPasswordUser);
-        assertEquals(BAD_REQUEST, response.getStatusCode());
+        assertEquals(CONFLICT, response.getStatusCode());
         assertEquals("Invalid password", response.getBody());
          // Testet die Anmeldung eines Benutzers mit dem falschen Passwort.
     }
